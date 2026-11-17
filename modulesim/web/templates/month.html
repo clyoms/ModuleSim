@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Month 1 · ModuleSim{% endblock %}
+{% block content %}
+<p class="ai-label">AI-written, practice only.</p>
+<h1>Month 1: {{ event.title }}</h1>
+<p>{{ event.description }}</p>
+<p><strong>Effect:</strong> task {{ event.task_id }} now takes {{ event.delay }} more week{{ 's' if event.delay > 1 }}.
+  Go-live is now week {{ company.length }} (planned: week {{ company.baseline_length }}).</p>
+
+<form method="post" action="{{ url_for('decide') }}">
+  <fieldset>
+    <legend>What do you do?</legend>
+    {% for r in event.responses %}
+    <label class="choice">
+      <input type="radio" name="response_id" value="{{ r.id }}" required>
+      <span><strong>{{ labels[r.id] }}</strong>
+        <span class="muted">Task {{ r.task_id }}: costs EUR {{ "{:,}".format(r.cost) }}, saves {{ r.time_saved }} week{{ 's' if r.time_saved != 1 }}.</span>
+        {{ r.note }}</span>
+    </label>
+    {% endfor %}
+  </fieldset>
+
+  <label for="reasoning"><strong>Why did you choose it?</strong> Use the ideas from the module.</label>
+  <p class="privacy">Do not type personal details here. Your reasoning is sent to an outside AI service to be marked. Email addresses and student numbers are removed first.</p>
+  <textarea id="reasoning" name="reasoning" rows="6" maxlength="{{ max_reasoning }}" required></textarea>
+  <button type="submit">Submit my decision</button>
+</form>
+{% endblock %}

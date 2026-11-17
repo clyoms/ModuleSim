@@ -1,0 +1,13 @@
+# Scheduling, effort and elapsed time
+
+Scheduling brings together the dependencies between tasks and the effort estimates. It gives planned start and finish dates, and it is iterative: the first schedule rarely meets the end date.
+
+Effort is the work in a task, for example 20 days of work. The project manager usually cannot change it. Elapsed time is the calendar time to do the effort, and the project manager influences it by committing resources.
+
+Adding people does not halve the time. Splitting a task adds work: duplicated background study, negotiation, consistency checks, more communication and a learning curve. Two people on a 20-day task take about three weeks, not two and a half.
+
+Dead time is time spent waiting for something outside the team, such as a vendor, a hardware delivery or a user review. A good schedule builds it in.
+
+Availability is below 100% because of holidays, sickness and meetings. A rule of thumb is four working days a week per person.
+
+Milestones are control points that mark a significant deliverable, such as sign-off of the requirements or a pilot going live. They show progress to the customer and can trigger stage payments.

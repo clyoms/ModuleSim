@@ -1,0 +1,19 @@
+# Critical path
+
+The critical path is the longest chain of dependent tasks. Its length is the shortest possible project time, because the project cannot finish until every chain finishes.
+
+A delay on the critical path delays the end date, day for day. A delay on a task with float does not, until the float runs out. So the project manager knows where to put people and attention.
+
+Critical means "no slack", not "most important". A task with zero float is critical.
+
+The forward pass, left to right, gives the early start and early finish of each task. Early start is zero for the first task, otherwise the largest early finish of its predecessors. Early finish is early start plus duration.
+
+The backward pass, right to left, gives the late finish and late start. Late finish is the project length for the last task, otherwise the smallest late start of its successors. Late start is late finish minus duration.
+
+Float, also called slack, is late start minus early start. Float belongs to the path, not the task: if one task uses the float, the next task on that path has none left.
+
+A merge point is a task with several predecessors. It is risky, because a late arrival from any of the paths into it delays everything after it.
+
+The critical path can move. If a task off the critical path overruns by more than its float, a new path becomes critical. Recalculate whenever any duration changes.
+
+Adding people to a task with float will not bring the end date forward. The end date is set by the tasks on the critical path.

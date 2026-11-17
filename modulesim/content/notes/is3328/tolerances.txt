@@ -1,0 +1,11 @@
+# Tolerances and escalation
+
+Tolerances are the acceptable limits of variation in time, cost, scope, quality, risk or benefits before escalation is required. They are agreed between the sponsor or board and the project manager at the start.
+
+Inside its tolerances the project manager can act alone. This is management by exception: the board hears only when it matters.
+
+The project manager escalates on a forecast breach, not an actual one. By the time the money is spent, the options are gone, so an early warning gives the board real choices.
+
+When escalating, the project manager raises an issue with options, such as cutting scope, adding budget or moving the date, each with its trade-off. The project manager does not cut scope alone.
+
+Tolerance is not contingency. Contingency is extra time and money built into the plan because plans assume success. Tolerance is the limit before escalation.

@@ -1,0 +1,11 @@
+# Business case
+
+A project must have a valid and justifiable reason. That reason is written down in the business case, approved, and checked again through the whole project, because the world changes.
+
+The business case asks three questions: is it desirable (the balance of costs, benefits and risks is worth it), is it viable (the project can deliver the products), and is it achievable (using the products is likely to bring the benefits).
+
+An output is the product, such as an app. An outcome is the change it causes, such as shorter queues. A benefit is the measurable gain, such as more sales. Benefits come from outcomes, not outputs.
+
+Every figure in a business case needs a basis. A number with no basis convinces no one.
+
+If the business case stops holding, for example because a delay wipes out the benefit, the project should be reviewed and may be stopped.

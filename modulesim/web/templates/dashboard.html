@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}{{ company.name }} · ModuleSim{% endblock %}
+{% block content %}
+<p class="ai-label">AI-written, practice only. Code checked every number below.</p>
+<h1>{{ company.name }}</h1>
+<p>{{ company.brief }}</p>
+<p><strong>Your project:</strong> {{ company.project }}</p>
+
+<div class="stats">
+  <div><span>Budget</span><strong>EUR {{ "{:,}".format(company.budget) }}</strong></div>
+  <div><span>Planned cost</span><strong>EUR {{ "{:,}".format(company.planned_cost) }}</strong></div>
+  <div><span>Go-live</span><strong>Week {{ company.length }}</strong></div>
+  <div><span>Cost of each week late</span><strong>EUR {{ "{:,}".format(company.cost_of_delay_per_week) }}</strong></div>
+</div>
+
+<h2>Business case</h2>
+<p>{{ company.business_case }}</p>
+
+<h2>Schedule</h2>
+<table>
+  <thead><tr><th>Task</th><th>Weeks</th><th>After</th><th>Starts</th><th>Ends</th><th>Float</th><th>Cost</th></tr></thead>
+  <tbody>
+  {% for t in company.tasks %}
+    <tr class="{{ 'critical' if t.critical }}">
+      <td>{{ t.id }}. {{ t.name }}</td><td>{{ t.duration }}</td>
+      <td>{{ t.after | join(', ') or '-' }}</td>
+      <td>{{ t.es }}</td><td>{{ t.ef }}</td><td>{{ t.float }}</td>
+      <td>EUR {{ "{:,}".format(t.cost) }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<p class="muted">Shaded rows are on the critical path:
+  {% for path in company.critical_paths %}{{ path | join(' → ') }}{% if not loop.last %} and {% endif %}{% endfor %}.</p>
+
+<h2>Team</h2>
+<ul>{% for person in company.team %}<li>{{ person.name }}, {{ person.role }}</li>{% endfor %}</ul>
+
+<form method="post" action="{{ url_for('month_start') }}">
+  <button type="submit">Start month 1</button>
+</form>
+{% endblock %}

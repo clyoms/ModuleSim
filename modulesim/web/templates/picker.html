@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Pick a module · ModuleSim{% endblock %}
+{% block content %}
+<h1>Pick a module</h1>
+<p>Hello, {{ student.name }}. You get a fictional company and one simulated month to run, using what you learned in the module.</p>
+<div class="cards">
+  {% for code, name in live.items() %}
+  <form class="card live" method="post" action="{{ url_for('start') }}">
+    <input type="hidden" name="module" value="{{ code }}">
+    <h2>{{ code }}</h2>
+    <p>{{ name }}</p>
+    <button type="submit">Start {{ code }}</button>
+  </form>
+  {% endfor %}
+  {% for code, name in later.items() %}
+  <div class="card off">
+    <h2>{{ code }}</h2>
+    <p>{{ name }}</p>
+    <p class="muted">Not in the prototype</p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

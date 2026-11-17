@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Result · ModuleSim{% endblock %}
+{% block content %}
+{% set r = attempt.result %}{% set fb = attempt.feedback %}
+<h1>What your decision led to</h1>
+<p>You chose <strong>{{ labels[r.response_id] }}</strong>.</p>
+<div class="stats">
+  <div><span>Planned go-live</span><strong>Week {{ r.baseline_end }}</strong></div>
+  <div><span>After the delay</span><strong>Week {{ r.end_after_event }}</strong></div>
+  <div><span>After your decision</span><strong>Week {{ r.end_after_decision }}</strong></div>
+  <div><span>Total cost, incl. lost sales</span><strong>EUR {{ "{:,}".format(r.total_cost) }}</strong></div>
+</div>
+{% if r.over_budget_by %}<p class="flash error">Over budget by EUR {{ "{:,}".format(r.over_budget_by) }}.</p>{% endif %}
+<p class="muted">Code calculated these numbers. Critical path now:
+  {% for path in r.critical_paths_after %}{{ path | join(' → ') }}{% if not loop.last %} and {% endif %}{% endfor %}.</p>
+
+<section class="feedback">
+  <p class="ai-label">{{ fb.label }}</p>
+  {% if fb.flagged %}<p class="flash error">Part of your reasoning looked like instructions to the AI. It was removed before marking and this attempt is flagged.</p>{% endif %}
+  <h2>Feedback</h2>
+  <p>{{ fb.summary }}</p>
+  <p><strong>Looking ahead:</strong> {{ fb.forecast }}</p>
+  <p><strong>Guidance band:</strong> {{ fb.band }} <span class="muted">(practice guidance, not a mark)</span></p>
+
+  {% for heading, points in [("What was good", fb.good_points), ("What you missed", fb.missed_points)] %}
+    {% if points %}
+    <h3>{{ heading }}</h3>
+    <ul class="points">
+      {% for p in points %}
+      <li>{{ p.text }}
+        <blockquote>“{{ p.quote }}” <cite>From your notes: {{ p.source_title }}</cite></blockquote></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  {% endfor %}
+  {% if fb.unverified_removed %}<p class="muted">{{ fb.unverified_removed }} AI point(s) were removed because their source could not be found in the notes.</p>{% endif %}
+</section>
+
+<p><strong>Your reasoning:</strong> {{ attempt.reasoning }}</p>
+<form method="post" action="{{ url_for('start') }}">
+  <input type="hidden" name="module" value="{{ attempt.module }}">
+  <button type="submit">Play again with a new company</button>
+</form>
+{% endblock %}

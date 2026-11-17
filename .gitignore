@@ -1,0 +1,10 @@
+# Secrets: the API key lives here and must never be committed (Part 1, Risk 2)
+.env
+
+# Local install and generated files
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+instance/
+*.db

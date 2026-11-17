@@ -1,0 +1,11 @@
+# Responses to a delay
+
+Crashing means spending more money, for example on overtime or extra staff, to finish a critical task sooner. It only helps if the task is on the critical path, and splitting work between more people adds overhead.
+
+Fast-tracking means overlapping tasks that would normally run one after the other. It saves time but raises the risk of rework, because the later task starts before the earlier one is finished.
+
+Re-sequencing means changing the order of tasks. It only helps the end date if it shortens the critical path. Moving work around on a path with float leaves the end date where it is.
+
+Reducing scope means delivering less, for example going live in fewer locations first. It saves time but cuts the benefit, so it should be agreed with the board.
+
+Accepting the delay is sometimes right. If the delayed task has enough float, the end date does not move and no money needs to be spent.
